@@ -5,21 +5,32 @@
 "use strict";
 
 import Glean from "@mozilla/glean/web";
-import { submission } from "./generated/pings.js";
+import { submission, accountsEvents } from "./generated/pings.js";
 import * as metrics from "./generated/sample.js";
+import * as ev from "./generated/event.js";
 
 Glean.setLogPings(true);
-Glean.setDebugViewTag("glean-from-website");
+Glean.setDebugViewTag("jer-js");
 Glean.initialize("glean-sample-website", true);
 
-metrics.pageLoaded.set();
+const createEventFn = (eventName) => () => {
+  ev.name.set(eventName);
+  accountsEvents.submit();
+};
 
-const submitPingButton = document.getElementById("glean");
-submitPingButton.addEventListener("click", () => {
-  submission.submit();
 
-  const consoleWarn = document.getElementById("console-warn");
-  consoleWarn.classList.add("visible");
+const view = createEventFn('login_view');
+const submit = createEventFn('login_submit');
+const success = createEventFn('login_submit_success');
+
+document.getElementById("glean_view").addEventListener("click", () => {
+  view();
+});
+document.getElementById("glean_submit").addEventListener("click", () => {
+  submit();
+});
+document.getElementById("glean_success").addEventListener("click", () => {
+  success();
 });
 
 const recordButton = document.getElementById("record");

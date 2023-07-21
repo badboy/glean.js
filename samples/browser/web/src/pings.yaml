@@ -19,3 +19,15 @@ submission:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1587095#c6
   notification_emails:
     - glean-team@mozilla.com
+
+accounts-events:
+  description: |
+    A custom ping to help showcase Glean.js.
+  include_client_id: true
+  send_if_empty: false
+  bugs:
+    - https://bugzilla.mozilla.org/1587095
+  data_reviews:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1587095#c6
+  notification_emails:
+    - glean-team@mozilla.com

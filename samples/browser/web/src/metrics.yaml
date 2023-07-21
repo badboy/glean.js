@@ -27,6 +27,7 @@ sample:
     lifetime: ping
     send_in_pings:
       - submission
+      - accounts-events
     description: |
       The number of times the sample website button was clicked.
     bugs:
@@ -37,4 +38,20 @@ sample:
       - technical
     notification_emails:
       - glean-team@mozilla.com
+    expires: never
+
+event:
+  name:
+    type: string
+    description: |
+      The name of the event
+    lifetime: ping
+    send_in_pings:
+      - accounts-events
+    notification_emails:
+      - fxa-staff@mozilla.com
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/FXA-7265
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1830504
     expires: never
