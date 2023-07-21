@@ -55,3 +55,49 @@ event:
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1830504
     expires: never
+
+login:
+  view:
+    type: event
+    description: |
+      The name of the event
+    lifetime: ping
+    send_in_pings:
+      - accounts-events
+    notification_emails:
+      - TODO
+    bugs:
+      - TODO
+    data_reviews:
+      - TODO
+    expires: never
+
+  submit:
+    type: event
+    description: |
+      The name of the event
+    lifetime: ping
+    send_in_pings:
+      - accounts-events
+    notification_emails:
+      - TODO
+    bugs:
+      - TODO
+    data_reviews:
+      - TODO
+    expires: never
+
+  submit_success:
+    type: event
+    description: |
+      The name of the event
+    lifetime: ping
+    send_in_pings:
+      - accounts-events
+    notification_emails:
+      - TODO
+    bugs:
+      - TODO
+    data_reviews:
+      - TODO
+    expires: never

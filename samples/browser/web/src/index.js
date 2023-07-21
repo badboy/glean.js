@@ -8,13 +8,24 @@ import Glean from "@mozilla/glean/web";
 import { submission, accountsEvents } from "./generated/pings.js";
 import * as metrics from "./generated/sample.js";
 import * as ev from "./generated/event.js";
+import * as login from "./generated/login.js";
 
 Glean.setLogPings(true);
 Glean.setDebugViewTag("jer-js");
 Glean.initialize("glean-sample-website", true);
 
+// i'm so lazy, i copied a function from the internet instead of adjusting my calls.
+// // i'm so lazy, i copied a function from the internet instead of adjusting my calls.
+function camelize(text) {
+  return text.replace(/^([A-Z])|[\s-_]+(\w)/g, function(match, p1, p2, offset) {
+    if (p2) return p2.toUpperCase();
+    return p1.toLowerCase();
+  });
+}
+
 const createEventFn = (eventName) => () => {
-  ev.name.set(eventName);
+  const evtName = camelize(eventName.substr(6)); // I'm too lazy to change the calls below.
+  login[evtName].record();
   accountsEvents.submit();
 };
 
